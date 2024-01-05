@@ -6,14 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>申能官网</title>
     <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/element.css">
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./css/about.css">
-    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <style> 
+    template{
+        display: none;
+    }
+    </style>
 </head>
 
 <body>
-    <div id="app">
+    <div>
         <header>
             <p>欢迎光临申能财险官网!</p>
             <div class="header-center">
@@ -51,170 +56,175 @@
                 <li>
                     <a href="./information.html">公开信息披露</a>
                 </li>
-                <li class="active">
+                <li>
                     <a href="./about.html">关于我们</a>
                 </li>
             </ul>
         </div>
 
         <main>
-            <div id="app">
+            <div class="app" id="app">
                 <div>
-                    <!-- <el-breadcrumb separator-class="el-icon-arrow-right">
-                        <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-                        <el-breadcrumb-item>活动管理</el-breadcrumb-item>
-                        <el-breadcrumb-item>活动列表</el-breadcrumb-item>
-                        <el-breadcrumb-item>活动详情</el-breadcrumb-item>
-                    </el-breadcrumb> -->
+                    <el-breadcrumb separator-class="el-icon-arrow-right">
+                        <el-breadcrumb-item><a href="./index.html">申能财险</a></el-breadcrumb-item>
+                        <el-breadcrumb-item :to="{ path: '/' }">关于我们</el-breadcrumb-item>
+                        <el-breadcrumb-item :to="{ path: '/list/1' }">公司概况</el-breadcrumb-item>
+                    </el-breadcrumb>
                     <div class="content-box">
                         <el-row :gutter="20" class="tac">
                             <el-col :span="6">
                                 <!-- <h5>默认颜色</h5> -->
                                 <div class="menu-box">
-                                    <el-menu default-active="2" class="el-menu-vertical-demo" @select="handelSelect" @open="handleOpen"
+                                    <el-menu default-active="/list/1" class="el-menu-vertical-demo" @select="handelSelect" @open="handleOpen"
                                     @close="handleClose">
-                                    <el-submenu index="1">
+                                    <el-submenu index="/list/1">
                                         <template slot="title">
-                                            <i class="el-icon-location"></i>
-                                            <span>导航一</span>
+                                            <i> <img src="./img/icon-in.png" alt=""></i>
+                                            <span>公司概况</span>
                                         </template>
                                         <el-menu-item-group>
-                                            <template slot="title">分组一</template>
-                                            <el-menu-item index="1-1">选项1</el-menu-item>
-                                            <el-menu-item index="1-2">选项2</el-menu-item>
+                                            <el-menu-item index="/list/1" name="myMenu">公司架构</el-menu-item>
+                                            <el-menu-item index="/list/2" name="myMenu">公司介绍</el-menu-item>
                                         </el-menu-item-group>
-                                        <el-menu-item-group title="分组2">
-                                            <el-menu-item index="1-3">选项3</el-menu-item>
-                                        </el-menu-item-group>
-                                        <el-submenu index="1-4">
-                                            <template slot="title">选项4</template>
-                                            <el-menu-item index="1-4-1">选项1</el-menu-item>
-                                        </el-submenu>
                                     </el-submenu>
-                                    <el-menu-item index="2">
-                                        <i class="el-icon-menu"></i>
-                                        <span slot="title">导航二</span>
+                                    <el-menu-item index="/list/3" name="企业文化">
+                                        <i><img src="./img/icon-qi.png" alt=""></i>
+                                        <span slot="title">企业文化</span>
                                     </el-menu-item>
-                                    <el-menu-item index="3" disabled>
-                                        <i class="el-icon-document"></i>
-                                        <span slot="title">导航三</span>
+                                    <el-menu-item index="/list/4">
+                                        <i><img src="./img/icon-cheng.png" alt=""></i>
+                                        <span slot="title">申能成就</span>
                                     </el-menu-item>
-                                    <el-menu-item index="4">
-                                        <i class="el-icon-setting"></i>
-                                        <span slot="title">导航四</span>
+                                   
+                                    <el-submenu index="/list/5">
+                                        <template slot="title">
+                                            <i><img src="./img/icon-gong.png" alt=""></i>
+                                            <span>申能公告</span>
+                                        </template>
+                                        <el-menu-item-group>
+                                            <el-menu-item index="/list/6">保险许可证信息公告专栏</el-menu-item>
+                                            <el-menu-item index="/list/7">公司服务承诺</el-menu-item>
+                                            <el-menu-item index="/list/8">业务投诉流程</el-menu-item>
+                                            <el-menu-item index="/list/9">业务承保流程</el-menu-item>
+                                            <el-menu-item index="/list/10">严正声明</el-menu-item>
+                                        </el-menu-item-group>
+                                    </el-submenu>
+                                    <el-menu-item index="/list/11">
+                                        <i><img src="./img/icon-act.png" alt=""></i>
+                                        <span slot="title">公益活动</span>
+                                    </el-menu-item>
+                                    <el-submenu index="/list/12">
+                                        <template slot="title">
+                                            <i><img src="./img/icon-news.png" alt=""></i>
+                                            <span>申能新闻</span>
+                                        </template>
+                                        <el-menu-item-group>
+                                            <el-menu-item index="/list/12">申能新闻</el-menu-item>
+                                            <el-menu-item index="/list/13">行业资讯</el-menu-item>
+                                        </el-menu-item-group>
+                                    </el-submenu>
+                                    <el-menu-item index="/list/14">
+                                        <i><img src="./img/icon-ji.png" alt=""></i>
+                                        <span slot="title"> 机构网点</span>
+                                    </el-menu-item>
+                                    <el-menu-item index="/list/15">
+                                        <i><img src="./img/icon-lian.png" alt=""></i>
+                                        <span slot="title">联系我们</span>
+                                    </el-menu-item>
+                                    <el-menu-item index="/list/16">
+                                        <i><img src="./img/icon-an.png" alt=""></i>
+                                        <span slot="title">法律安全</span>
+                                    </el-menu-item>
+                                    <el-menu-item index="/list/17">
+                                        <i><img src="./img/icon-sh.png" alt=""></i>
+                                        <span slot="title">使用说明</span>
                                     </el-menu-item>
                                 </el-menu>
                                 </div>
                                
                             </el-col>
                             <el-col :span="18">
-                                <div class="news">
-                                    <div class="news-containers">
-                                        <ul id="news-tilte" class="news-tilte">
-                                            <li class="active">申能新闻</li>
-                                            <div class="news_more">
-                                            </div>
-                                        </ul>
-                                        <div class="news-content" id="news-content">
-                                            <ul class="new_right_context">
-                                                <li>
-                                                    <div class="new_title">
-                                                        甘肃分公司推出五项理赔应急举措迅速应对临夏积石山6.2级地震
-                                                    </div>
-                                                    <div class="new_date">2023-12-18</div>
-                                                </li>
-                                                <li>
-                                                    <div class="new_title">
-                                                        安徽亳州中支荣获“亳州市劳动保障诚信A级单位”荣誉称号
-                                                    </div>
-                                                    <div class="new_date">2023-11-30</div>
-                                                </li>
-                                                <li>
-                                                    <div class="new_title">
-                                                        陕西西安中支举办反洗钱专题培训
-                                                    </div>
-                                                    <div class="new_date">2023-11-20</div>
-                                                </li>
-                                                <li>
-                                                    <div class="new_title">
-                                                        快速理赔显诚信 真诚服务暖人心——湖南桃江支公司获赠锦旗
-                                                    </div>
-                                                    <div class="new_date">2023-10-01</div>
-                                                </li>
-                                                <li>
-                                                    <div class="new_title">
-                                                        黑龙江分公司积极应对暴雪灾害天气
-                                                    </div>
-                                                    <div class="new_date">2023-09-01</div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>   
-
+                                <router-view></router-view>
+                                
+                                
                             </el-col>
                         </el-row>
-                        <el-row :gutter="20">
-                            <el-col :span="10">
-                                <div><br></div>
-                            </el-col>
-                            <el-col :span="14">
-                                <el-pagination
-                                    background
-                                    layout="prev, pager, next"
-                                    :total="1000">
-                                    </el-pagination>
-                            </el-col>
-                            
-                        </el-row>
+                        <!-- <div>
+                            <el-button type="primary"><router-link to="/foo">主要按钮</router-link></el-button>
+                          
+                        </div>
+                        <router-view></router-view> -->
                     </div>
-                   
-                </div>
-               
-                <!-- <router-link to="/Home">
-                    <el-button type="primary">主要按钮</el-button>
-                </router-link> -->
-
-                <!-- <div  style="height: 20rem;">
                     
-                </div> -->
+                </div>
 
             </div>
         </main>
 
         <footer>
-            <p>友情链接: <span>国家金融监督管理总局</span> &nbsp;<span>中国保险行业协会</span>&nbsp;<span>保险消费者知识园地</span></p>
+            <p>友情链接: <a href="">国家金融监督管理总局</a> &nbsp;<a href="">中国保险行业协会</a>&nbsp; <a href="">保险消费者知识园地</a></p>
             <hr>
             <div class="footer_con">
                 <div>
                     <h3>关于我们</h3>
                     <div style="display: flex;">
-                        <span style="margin-right: 50px;">
-                            <p>公司介绍 </p>
-                            <p>信访投诉</p>
+                        <span style="margin-right: 3.125rem;">
+                            <p><a href="">公司介绍</a></p>
+                            <p><a href="">信访投诉</a></p>
                         </span>
                         <span>
-                            <p>联系我们</p>
-                            <p>机构网点</p>
+                            <p><a href="">联系我们</a></p>
+                            <p><a href="">机构网点</a></p>
                         </span>
                     </div>
                 </div>
                 <div>
                     <h3>企业社会责任</h3>
-                    <p>企业公示</p>
-                    <p>公开信息披露</p>
+                    <p><a href="">企业公示</a> </p>
+                    <p><a href="">公开信息披露</a></p>
                 </div>
                 <div>
                     <h3>帮助中心</h3>
-                    <p>法律安全</p>
-                    <p>使用说明</p>
+                    <p><a href="">法律安全</a></p>
+                    <p><a href="">使用说明</a></p>
                 </div>
-                <div class="footer_logo"><img src="../img/logo.png" alt=""></div>
+                <div class="footer_logo"><img src="./img/logo.png" alt=""></div>
             </div>
             <div class="footer_bg"></div>
-
+    
         </footer>
-
+        <template id="list">
+            <div>
+                <div class="news">
+                    <div class="news-containers">
+                        <ul id="news-tilte" class="news-tilte">
+                            <li class="active">{{this.title}}</li>
+                            <div class="news_more">
+                            </div>
+                        </ul>
+                        <div class="news-content" id="news-content">
+                            <ul class="new_right_context">
+                                <li :class="{'active':line}" v-for="item in listData">
+                                    <div class="new_title">
+                                        {{item.content}}
+                                    </div>
+                                    <div class="new_date">{{item.time}}</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div v-if="pages" style="display: flex; justify-content: end;">
+                    <el-pagination
+                    background
+                    layout="prev, pager, next"
+                    prev-text="上一页"
+                    next-text="下一页"
+                    :total="50">
+                    </el-pagination>
+                </div>   
+            </div>
+        </template>    
 
     </div>
 
@@ -227,32 +237,188 @@
 
 
 <!-- 引入组件库 -->
-<script src="https://unpkg.com/vue@2/dist/vue.js"></script>
-<script src="https://unpkg.com/vue-router@4.0.15/dist/vue-router.global.js"></script>
-<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="./js/vue.js"></script>
+<script src="./js/vue-router.js"></script>
+<script src="./js/element.js"></script>
 <script src="./js/common.js"></script>
 <script>
-    const NotFound = { template: '<p>Page not found</p>' }
-    const Home = { template: '<p>home page</p>' }
-    const About = { template: '<p>about page</p>' }
-    const other = { template: '<p>about page</p>' }
-    const routes = {
-        '/': Home,
-        '/about': About,
-        '/shengneng/views/about.html': other
+    const listData=[
+        { title:' 公司概况',id:'1',pages:false,line:false, list:[
+            {content:'1、公司名称:天安财产保险股份有限公司',time:''},
+            {content:'2、天安财险网站的官方名称:天安财产保险股份有限公司',time:''},
+            {content:'3、天安财险网站的官方网http://www.95505.com.cn/',time:''},
+            {content:'4、 天安财险APP名称:天安财险',time:''},
+            {content:'5、天安财险官方认证微信公众号名称:天安直通车险;保险e站通,天安财险',time:''},
+            {content:'6、注册资本:人民币17763751,770元',time:''},
+            {content:'7、公司住所和营业场所·中国(上海)自由贸易试验区国展路1529号13-17层',time:''},
+            {content:'8、成立时间:1995年1月27日',time:''},
+            {content:'9、经营范围和经营区域',time:''},
+            {content:'1)经营范用·承保人民币、外五的各种财产保险、责任保险、信用保险、水险、音外伤害保险，健康保险及全副',time:''},
+            {content:'服务保险等业务:办理各种再保险业务和法定保险业务:与国内外保险机构建立代理关系和业务往来关系,',time:''},
+            {content:'代理检验 理 追偿等有关事官·办理经中国保监会批准的资全运用业条·经中国保监会批准的其他业务。',time:''},
+            {content:'2)经营区域·公司经营区域覆盖32个省、市、自治区。北京、天津、河北、山西、辽宁、吉林、黑龙江、上海、江苏,',time:''},
+            {content:'浙汀、安徽、福建、江西、山东、河南、湖北、湖南、广东、广西、海南、重庆、四川、贵州、云南、陕西、甘肃、新疆、深',time:''},
+            {content:'圳、大连、宁波、青岛、厦门',time:''},
+            {content:'10、法定代表人·宋荣中',time:''},
+            {content:'11、客服电话和投诉电话:95505',time:''},
+            {content:'12、投诉专用邮箱:tacs@tianan-insurance.com',time:''},
+            {content:'13.投诉渠道和投诉外理程序',time:''},
+            {content:'14、各分支机构营业场所和联系电话',time:''},
+        ]},
+        { title:' 公司介绍',id:'2',pages:false,line:true, list:[
+            {id:1, content:'13.投诉渠道和投诉外理程序',time:''},
+        ]},
+        { title:'企业文化',id:'3',pages:false,line:true, list:[
+            {id:1, content:'13.投诉渠道和投诉外理程序',time:''},
+        ]},
+        { title:' 申能成就',id:'4',pages:false,line:true, list:[
+            {id:1, content:'13.投诉渠道和投诉外理程序',time:''},
+        ]},
+        { title:' 申能公告',id:'5',pages:false,line:true, list:[
+            {id:1, content:'13.投诉渠道和投诉外理程序',time:''},
+        ]},
+        { title:' 保险许可证信息公告专栏',id:'6',pages:false,line:true, list:[
+            {id:1, content:'·申能财产保险股份有限公司保定中心支公司定州营销服务部迁址信息公告.pdf',time:'2023-12-19'},
+            {id:1, content:'·申能财产保险股份有限公司承德中心支公司迁址信息公告.pdf',time:'2023-12-19'},
+            {id:1, content:'·申能财产保险股份有限公司湖北首分公司江夏支公司迁址信息公告.pdf',time:'2023-12-19'},
+            {id:1, content:'·申能财产保险股份有限公司湖北首分公司江夏支公司迁址信息公告.pdf',time:'2023-12-19'},
+            {id:1, content:'·申能财产保险股份有限公司临桂支公司迁址信息公告.pdf',time:'2023-12-19'},
+            {id:1, content:'·申能财产保险股份有限公司临桂支公司迁址信息公告.pdf',time:'2023-12-19'},
+            {id:1, content:'·申能财产保险股份有限公司梅州中心支公司蕉岭营销服务部迁址信息公告.pdf',time:'2023-12-19'},
+            {id:1, content:'·申能财产保险股份有限公司沈阳市沈河支公司迁址信息公告.pdf',time:'2023-12-19'},
+            {id:1, content:'·申能财产保险股份有限公司通化中心支公司迁址信息公告.pdf',time:'2023-12-19'},
+            {id:1, content:'·申能财产保险股份有限公司枣庄中心支公司峰城营销服务部迁址信息公告pdf',time:'2023-12-19'},
+            {id:1, content:'·申能财产保险股份有限公司重庆市南岸支公司迁址信息公告.pdf',time:'2023-12-19'},
+            {id:1, content:'·申能财产保险股份有限公司城关区支公司迁址信息公告,pdt',time:'2023-12-19'},
+            {id:1, content:'·申能财产保险股份有限公司惠州中心支公司迁址信息公告.pdf',time:'2023-12-19'},
+            {id:1, content:'·申能财产保险股份有限公司吉林市船营支公司迁址信息公告.pdf',time:'2023-12-19'},
+            {id:1, content:'·申能财产保险股份有限公司济宁中心支公司充州营销服务部迁址信息公告.pdf',time:'2023-12-19'},
+            {id:1, content:'·申能财产保险股份有限公司金华中心支公司迁址信息公告.pdf',time:'2023-12-19'},
+            {id:1, content:'·申能财产保险股份有限公司莱芜中心支公司钢城营销服务部迁址信息公告pdf',time:'2023-12-19'},
+            {id:1, content:'·申能财产保险股份有限公司莱芜中心支公司钢城营销服务部迁址信息公告pdf',time:'2023-12-19'},
+            {id:1, content:'·申能财产保险股份有限公司廊坊中心支公司大城营销服务部迁址信息公告.pd',time:'2023-12-19'},
+            {id:1, content:'·申能财产保险股份有限公司潍坊中心支公司坊子营销服务部迁址信息公告.pdf',time:'2023-12-19'},
+            {id:1, content:'·申能财产保险股份有限公司潍坊中心支公司迁址信息公告.pdf',time:'2023-12-19'},
+            {id:1, content:'·申能财产保险股份有限公司西安中心支公司阎良营销服务部迁址信息公告.pd',time:'2023-12-19'},
+            {id:1, content:'·申能财产保险股份有限公司归支公司迁址信息公告.pdf',time:'2023-12-19'},
+            {id:1, content:'·申能财产保险股份有限公司咸阳中心支公司彬州营销服务部迁址信息公告.pdf',time:'2023-12-19'},
+           
+        ]},
+        { title:' 公司服务承诺',id:'7',pages:false,line:true, list:[
+            {id:1, content:'13.投诉渠道和投诉外理程序',time:''},
+        ]},
+        { title:' 业务投诉流程',id:'8',pages:false,line:true, list:[
+            {id:1, content:'13.投诉渠道和投诉外理程序',time:''},
+        ]},
+        { title:' 业务承保流程',id:'9',pages:false,line:true, list:[
+            {id:1, content:'13.投诉渠道和投诉外理程序',time:''},
+        ]},
+        { title:' 严正声明',id:'10',pages:false,line:true, list:[
+            {id:1, content:'13.投诉渠道和投诉外理程序',time:''},
+        ]},
+        { title:' 公益活动',id:'11',pages:false,line:true, list:[
+            {id:1, content:'',time:''},
+        ]},
+        { title:' 申能新闻',id:'12',pages:true,line:true, list:[
+            {id:1, content:'寒潮来临 温暖到家-浙江温州分公司为独居老人上门送赔款',time:'2023-12-29'},
+            {id:1, content:'服务倾真情 理赔暖人心',time:'2023-12-29'},
+            {id:1, content:'·申能财险河南开封中支荣获当地行协学习二十大精神知识竟赛二等奖',time:'2023-12-29'},
+            {id:1, content:'快速理赔显诚信天安服务暖人心申能财险山东临沂中支优质服务获客户赞誉',time:'2023-12-29'},
+            {id:1, content:'快速理赔显诚信天安服务暖人心申能财险山东临沂中支优质服务获客户赞誉',time:'2023-12-29'},
+            {id:1, content:'风雪无阻暖心服务天安财险山东分公司积极应对暴雪灾害',time:'2023-12-29'},
+            {id:1, content:'申能财险辽宁分公司召开安全生产专题视频会',time:'2023-12-29'},
+            {id:1, content:'申能财险辽宁分公司召开安全生产专题视频会',time:'2023-12-29'},
+            {id:1, content:'申能财险甘肃分公司推出五项理赔应急举措迅速应对临夏积石山6.2级地需',time:'2023-12-29'},
+            {id:1, content:'申能财险陕西分公司积极开展食品安全宣传周活动',time:'2023-12-29'},
+            {id:1, content:'上海分公司获“上海市和谐劳动关系达标企业"荣誉称号',time:'2023-12-29'},
+        ]},
+        { title:' 行业资讯',id:'13',pages:false,line:true, list:[
+            {id:1, content:'13.投诉渠道和投诉外理程序',time:''},
+        ]},
+        { title:' 机构网点',id:'14',pages:false,line:true, list:[
+            {id:1, content:'13.投诉渠道和投诉外理程序',time:''},
+        ]},
+        { title:' 联系我们',id:'15',pages:false,line:true, list:[
+            {id:1, content:'13.投诉渠道和投诉外理程序',time:''},
+        ]},
+        { title:' 法律安全',id:'16',pages:false,line:true, list:[
+            {id:1, content:'13.投诉渠道和投诉外理程序',time:''},
+        ]},
+        { title:' 使用说明',id:'17',pages:false,line:true, list:[
+            {id:1, content:'13.投诉渠道和投诉外理程序',time:''},
+        ]},
+        
+        
+    ]
+    const List = { 
+        template: '#list',
+        data:function(){
+            return {
+                title:'',
+                pages:false,
+                line:false,
+                listData:[],
+            }
+        },
+        watch:{
+            '$route':'getPath'
+        },
+        mounted:function(){
+            
+           this.getPath()
+           
+        },
+        methods:{
+            getPath(){
+                listData.map(item=>{
+                    if(item.id== this.$route.params.id){
+                        this.title=item.title
+                        this.pages=item.pages
+                        this.line=item.line
+                        this.listData=item.list
+                        console.log(this.listData)
+                    }else{
+                        // this.listData=[]
+                    }
+                })
+            }
+        } 
     }
+    const routes = [
+        { path: '/list/:id', component: List },
+        { path: '*', redirect: '/list/1' }
+    ]
+    const router = new VueRouter({
+        routes 
+    })
+    
     new Vue({
         el: '#app',
+        router,
+        // components:{
+        //     'List':{
+        //         template:'#list',
+        //         data:function(){
+        //             return {
+        //                 tit:''
+        //             }
+        //         }
+
+        //     }
+        // },
+        
         data: function () {
-           
             return { 
                 visible: false,
-                currentRoute: window.location.pathname
+                currentRoute: window.location.pathname,
+                
+                
             }
         },
         computed: {
-            ViewComponent () {
-            // return routes[this.currentRoute]|| NotFound
+            username() {
+            // 我们很快就会看到 `params` 是什么
+            return this.$route.params.username
             }
         },
         mounted: function () {
@@ -263,31 +429,22 @@
             console.log(routes[this.currentRoute])
         },
         methods: {
+            goBack() {
+                window.history.length > 1 ? this.$router.go(-1) : this.$router.push('/')
+            },
             handleOpen(key, keyPath) {
                 console.log(key, keyPath);
             },
             handleClose(key, keyPath) {
                 console.log(key, keyPath);
             },
-            handelSelect(key, keyPath){
-                console.log(key, keyPath);
+            handelSelect(key){
+                console.log(this.$refs.name);
+                this.$router.push(key) 
             }
         },
         // render (h) { return h(this.ViewComponent) }
     })
-</script>
-<script>
-    // $('#tab-tilte li').click(function () {
-    //     $(this).css({ 'background': 'green', 'color': '#fff' })
-    //     // $(this).children().css({ 'color': '#fff' })
-    //     // $(this).siblings().children().css({ 'color': '#4d4d4d' })
-    // }, function () {
-    //     // $(this).css('background','block')
-    // })
-
-
-
-
 </script>
 
 </html>
