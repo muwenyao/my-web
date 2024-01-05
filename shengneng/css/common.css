@@ -6,5 +6,5 @@ a {
   }
 @font-face {
     font-family: 'Museo';
-    src: url(../font/Museo\ Sans\ 500\ 字体.ttf);
+    src: url(./font/Museo-sans-500.ttf);
 }
