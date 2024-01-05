@@ -1,4 +1,12 @@
-
+a {
+    text-decoration: none; 
+    color: inherit; 
+    cursor: pointer; 
+  }
+@font-face {
+    font-family: 'Museo';
+    src: url(./font/Museo-sans-500.ttf);
+}
 p{
     margin: 0;
 }
