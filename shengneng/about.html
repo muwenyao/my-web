@@ -79,21 +79,21 @@
                                             <span>导航一</span>
                                         </template>
                                         <el-menu-item-group>
-                                            <el-menu-item index="/foo">
+                                            <el-menu-item index="/list/1">
                                                 选项2
                                             </el-menu-item>
-                                            <el-menu-item index="1-2">选项2</el-menu-item>
+                                            <el-menu-item index="/list/2">选项2</el-menu-item>
                                         </el-menu-item-group>
                                     </el-submenu>
-                                    <el-menu-item index="2">
+                                    <el-menu-item index="/list/3">
                                         <i class="el-icon-menu"></i>
                                         <span slot="title">导航二</span>
                                     </el-menu-item>
-                                    <el-menu-item index="3">
+                                    <el-menu-item index="/list/4">
                                         <i class="el-icon-document"></i>
                                         <span slot="title">导航三</span>
                                     </el-menu-item>
-                                    <el-menu-item index="4">
+                                    <el-menu-item index="/list/5">
                                         <i class="el-icon-setting"></i>
                                         <span slot="title">导航四</span>
                                     </el-menu-item>
@@ -102,49 +102,7 @@
                                
                             </el-col>
                             <el-col :span="18">
-                                <div class="news">
-                                    <div class="news-containers">
-                                        <ul id="news-tilte" class="news-tilte">
-                                            <li class="active">申能新闻</li>
-                                            <div class="news_more">
-                                            </div>
-                                        </ul>
-                                        <div class="news-content" id="news-content">
-                                            <ul class="new_right_context">
-                                                <li>
-                                                    <div class="new_title">
-                                                        甘肃分公司推出五项理赔应急举措迅速应对临夏积石山6.2级地震
-                                                    </div>
-                                                    <div class="new_date">2023-12-18</div>
-                                                </li>
-                                                <li>
-                                                    <div class="new_title">
-                                                        安徽亳州中支荣获“亳州市劳动保障诚信A级单位”荣誉称号
-                                                    </div>
-                                                    <div class="new_date">2023-11-30</div>
-                                                </li>
-                                                <li>
-                                                    <div class="new_title">
-                                                        陕西西安中支举办反洗钱专题培训
-                                                    </div>
-                                                    <div class="new_date">2023-11-20</div>
-                                                </li>
-                                                <li>
-                                                    <div class="new_title">
-                                                        快速理赔显诚信 真诚服务暖人心——湖南桃江支公司获赠锦旗
-                                                    </div>
-                                                    <div class="new_date">2023-10-01</div>
-                                                </li>
-                                                <li>
-                                                    <div class="new_title">
-                                                        黑龙江分公司积极应对暴雪灾害天气
-                                                    </div>
-                                                    <div class="new_date">2023-09-01</div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+                                <router-view></router-view>
                                 <div style="display: flex; justify-content: end;">
                                     <el-pagination
                                     background
@@ -155,18 +113,15 @@
                                 
                             </el-col>
                         </el-row>
-                        <div>
+                        <!-- <div>
                             <el-button type="primary"><router-link to="/foo">主要按钮</router-link></el-button>
-                            <router-link to="/bar">Go to Bar</router-link>
+                          
                         </div>
-                        <router-view></router-view>
+                        <router-view></router-view> -->
                     </div>
                     
                 </div>
-               
-               
 
-               
             </div>
         </main>
 
@@ -202,7 +157,53 @@
             <div class="footer_bg"></div>
 
         </footer>
-
+        <template id="list">
+            <div>
+                <div class="news">
+                    <div class="news-containers">
+                        <ul id="news-tilte" class="news-tilte">
+                            <li class="active">{{this.$route.params.id}}</li>
+                            <div class="news_more">
+                            </div>
+                        </ul>
+                        <div class="news-content" id="news-content">
+                            <ul class="new_right_context">
+                                <li>
+                                    <div class="new_title">
+                                        甘肃分公司推出五项理赔应急举措迅速应对临夏积石山6.2级地震
+                                    </div>
+                                    <div class="new_date">2023-12-18</div>
+                                </li>
+                                <li>
+                                    <div class="new_title">
+                                        安徽亳州中支荣获“亳州市劳动保障诚信A级单位”荣誉称号
+                                    </div>
+                                    <div class="new_date">2023-11-30</div>
+                                </li>
+                                <li>
+                                    <div class="new_title">
+                                        陕西西安中支举办反洗钱专题培训
+                                    </div>
+                                    <div class="new_date">2023-11-20</div>
+                                </li>
+                                <li>
+                                    <div class="new_title">
+                                        快速理赔显诚信 真诚服务暖人心——湖南桃江支公司获赠锦旗
+                                    </div>
+                                    <div class="new_date">2023-10-01</div>
+                                </li>
+                                <li>
+                                    <div class="new_title">
+                                        黑龙江分公司积极应对暴雪灾害天气
+                                    </div>
+                                    <div class="new_date">2023-09-01</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>    
 
     </div>
 
@@ -220,62 +221,31 @@
 <script src="./js/element.js"></script>
 <script src="./js/common.js"></script>
 <script>
-    const Foo = { template: `<div><div class="news">
-                                    <div class="news-containers">
-                                        <ul id="news-tilte" class="news-tilte">
-                                            <li class="active">申能新闻</li>
-                                            <div class="news_more">
-                                            </div>
-                                        </ul>
-                                        <div class="news-content" id="news-content">
-                                            <ul class="new_right_context">
-                                                <li>
-                                                    <div class="new_title">
-                                                        甘肃分公司推出五项理赔应急举措迅速应对临夏积石山6.2级地震
-                                                    </div>
-                                                    <div class="new_date">2023-12-18</div>
-                                                </li>
-                                                <li>
-                                                    <div class="new_title">
-                                                        安徽亳州中支荣获“亳州市劳动保障诚信A级单位”荣誉称号
-                                                    </div>
-                                                    <div class="new_date">2023-11-30</div>
-                                                </li>
-                                                <li>
-                                                    <div class="new_title">
-                                                        陕西西安中支举办反洗钱专题培训
-                                                    </div>
-                                                    <div class="new_date">2023-11-20</div>
-                                                </li>
-                                                <li>
-                                                    <div class="new_title">
-                                                        快速理赔显诚信 真诚服务暖人心——湖南桃江支公司获赠锦旗
-                                                    </div>
-                                                    <div class="new_date">2023-10-01</div>
-                                                </li>
-                                                <li>
-                                                    <div class="new_title">
-                                                        黑龙江分公司积极应对暴雪灾害天气
-                                                    </div>
-                                                    <div class="new_date">2023-09-01</div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div></div>` }
+    const Foo = { template: `<div>hjk</div>` }
     const Bar = { template: '<div>bar</div>' }
-    const List = { template: '<div>list</div>' }
+    const List = { template: '#list' }
     const routes = [
         { path: '/foo', component: Foo },
         { path: '/bar', component: Bar },
         { path: '/list/:id', component: List },
-        { path: '*', redirect: '/foo' }
+        // { path: '*', redirect: '/foo' }
     ]
     const router = new VueRouter({
         routes // (缩写) 相当于 routes: routes
     })
     new Vue({
         el: '#app',
+        // components:{
+        //     'List':{
+        //         template:'#list',
+        //         data:function(){
+        //             return {
+        //                 tit:''
+        //             }
+        //         }
+
+        //     }
+        // },
         router,
         data: function () {
             return { 
