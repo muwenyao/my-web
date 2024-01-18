@@ -317,7 +317,7 @@ main {
 .news-content .active {
   border-bottom: .0875rem dashed transparent;
   background: linear-gradient(#fff,#fff) padding-box, 
-    repeating-linear-gradient(-45deg,#fda22d 0, #fda22d 0.3em, #fff 0,#fff 0.6em);
+    repeating-linear-gradient(-45deg,#fda22d 0, #fda22d 0.1em, #fff 0,#fff 0.2em);
 }
 
 
