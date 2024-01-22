@@ -31,7 +31,7 @@
   /* margin: 0 auto; */
 }
 .el-submenu.is-active{
-  background: #009f00;
+  background: #019b4b;
 }
 .el-submenu.is-active .el-submenu__title{
   color: #fff;
@@ -57,7 +57,7 @@
   color: #fff !important;
 }
 .el-menu-item.is-active {
-  background: #009f00;
+  background: #019b4b;
   /* background: #ccc; */
   color: #fff !important;
 }
