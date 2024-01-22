@@ -33,10 +33,10 @@
 .el-submenu.is-active{
   background: #019b4b;
 }
-.el-submenu.is-active .el-submenu__title{
+.el-submenu.is-active>.el-submenu__title{
   color: #fff;
 }
-.el-submenu.is-active .el-submenu__title i{
+.el-submenu.is-active>.el-submenu__title i{
   color: #fff;
 }
 .el-submenu.is-active .icon1 {
