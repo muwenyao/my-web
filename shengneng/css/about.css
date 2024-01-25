@@ -238,11 +238,19 @@ main {
   font-size: 1.5rem;
 }
 
-.el-submenu .el-menu-item {
+.el-submenu >.el-menu-item {
   padding-left: 45px !important;
   min-width: 2.25rem;
-  /* width: 92%; */
-  /* margin-left: 1rem; */
+}
+.el-submenu .el-menu-item .el-menu-item {
+  padding-left: 60px !important;
+  min-width: 2.25rem;
+  
+}
+.el-submenu .el-menu-item{
+  padding-right: 10px !important;
+  overflow: hidden;
+  text-overflow:ellipsis;
 }
 
 .news-tilte li:hover {

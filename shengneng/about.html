@@ -53,7 +53,7 @@
                     <a href="./server.html#/list/1">客户服务</a>
                 </li>
                 <li>
-                    <a href="./information.html">公开信息披露</a>
+                    <a href="./information.html#/list/1">公开信息披露</a>
                 </li>
                 <li class="active">
                     <a href="javaScript:;">关于我们</a>
@@ -66,15 +66,15 @@
                 <div>
                     <el-breadcrumb separator-class="el-icon-arrow-right">
                         <el-breadcrumb-item><a href="./index.html">申能财险</a></el-breadcrumb-item>
-                        <el-breadcrumb-item><a href="./about.html">关于我们</a></el-breadcrumb-item>
-                        <el-breadcrumb-item v-if="pathFlag" :to="{ path: path }">{{pathDa}}</el-breadcrumb-item>
+                        <el-breadcrumb-item :to="{ path: '/list/1' }"><a @click="toInit">关于我们</a> </el-breadcrumb-item>
+                        <el-breadcrumb-item v-if="pathFlag" :to="{ path: pathRoute }"><a @click="toInit">{{pathDa}}</a></el-breadcrumb-item>
                         <el-breadcrumb-item style="color: #666;">{{pathName}}</el-breadcrumb-item>
                     </el-breadcrumb>
                     <div class="content-box">
                         <el-row :gutter="20" class="tac">
                             <el-col :span="6">
                                 <div class="menu-box">
-                                    <el-menu default-active="/list/1" class="el-menu-vertical-demo"
+                                    <el-menu :default-active="activeIndex" class="el-menu-vertical-demo"
                                         @select="handelSelect" @open="handleOpen" @close="handleClose">
                                         <el-submenu index="/list/1">
                                             <template slot="title">
@@ -190,7 +190,7 @@
             </div>
             <hr>
             <div class="bei">
-                版权所有 © 申能财产保险股份有限公司 未经许可不得复制、转载或摘编，违者必究！  Ι  Copyright 1994-2019 Tianan Property Insurance Co.,Ltd All right reserved  Ι ICP许可证号 沪ICP备06021817号-1 公安部备案号：31011502010058   Ι  本网站已支持IPv6
+                版权所有 © 申能财产保险股份有限公司 未经许可不得复制、转载或摘编，违者必究！  Ι  Copyright 1994-2019 Shenergy Property & Casualty Insurance Co., Ltd. All right reserved  Ι ICP许可证号 沪ICP备06021817号-1 公安部备案号：31011502010058   Ι  本网站已支持IPv6
             </div>
             <div class="footer_bg"></div>
 
@@ -476,10 +476,30 @@
             }
         },
         computed: {
-            username() {
-
-                // return this.$route.params.username
-            }
+            activeIndex(){
+                let key=this.$route.path
+                this.pathName = this.routerArr[key.substring(6, 8)]
+                if (key == '/list/1' || key == '/list/2') {
+                    this.pathFlag = true
+                    this.pathDa = '公司概况'
+                    this.pathRoute = '/list/1'
+                    return key
+                } else if (key == '/list/6' || key == '/list/7' || key == '/list/8' || key == '/list/9' || key == '/list/10') {
+                    this.pathFlag = true
+                    this.pathDa = '申能公告'
+                    this.pathRoute = '/list/6'
+                    return key
+                } else if (key == '/list/12' || key == '/list/13') {
+                    this.pathFlag = true
+                    this.pathDa = '申能新闻'
+                    this.pathRoute = '/list/12'
+                    return key
+                } else {
+                    this.pathFlag = false
+                    return key
+                    
+                }
+            },
         },
         created: function () {
             this.$nextTick(function () {
@@ -493,20 +513,21 @@
             },
             handleOpen(key, keyPath) {
                 this.$router.push(key)
-                this.getPath(key)
+                // this.getPath(key)
                 
             },
             handleClose(key, keyPath) {
                 console.log(key, keyPath);
             },
             handelSelect(key) {
-                console.log(key)
+                console.log(key,'kakkkk')
                
-                this.getPath(key)
+                // this.getPath(key)
                 console.log(this.pathName)
                 this.$router.push(key)
             },
             getPath(key){
+                
                 if (key == '/list/1' || key == '/list/2') {
                     this.pathFlag = true
                     this.pathDa = '公司概况'
@@ -523,6 +544,11 @@
                     this.pathFlag = false
                 }
                 this.pathName = this.routerArr[key.substring(6, 8)]
+            },
+            toInit(key){
+                // this.activeIndex=this.pathRoute
+                this.handelSelect(key)
+                // this.$router.go(0)
             }
         },
 

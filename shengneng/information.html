@@ -50,7 +50,7 @@
                     <a href="./index.html">首页</a>
                 </li>
                 <li >
-                    <a href="./server.html">客户服务</a>
+                    <a href="./server.html#/list/1">客户服务</a>
                 </li>
                 <li class="active">
                     <a href="javaScript:;">公开信息披露</a>
@@ -66,15 +66,16 @@
                 <div>
                     <el-breadcrumb separator-class="el-icon-arrow-right">
                         <el-breadcrumb-item><a href="./index.html">申能财险</a></el-breadcrumb-item>
-                        <el-breadcrumb-item><a href="./server.html">客户服务</a></el-breadcrumb-item>
-                        <el-breadcrumb-item v-if="pathFlag" :to="{ path: path }">{{pathDa}}</el-breadcrumb-item>
+                        <el-breadcrumb-item><a @click="toInit('/list/1')" href="./information.html#/list/1">公开信息披露</a></el-breadcrumb-item>
+                        <el-breadcrumb-item v-if="pathFlag" :to="{ path: pathRoute }"><a @click="toInit">{{pathDa}}</a> </el-breadcrumb-item>
+                        <el-breadcrumb-item v-if="pathEnd" :to="{ path: pathRouteEnd }"><a @click="toInit">{{pathEndName}}</a> </el-breadcrumb-item>
                         <el-breadcrumb-item style="color: #666;">{{pathName}}</el-breadcrumb-item>
                     </el-breadcrumb>
                     <div class="content-box">
                         <el-row :gutter="20" class="tac">
                             <el-col :span="6">
                                 <div class="menu-box">
-                                    <el-menu default-active="/list/1" class="el-menu-vertical-demo"
+                                    <el-menu :default-active="activeIndex" class="el-menu-vertical-demo"
                                         @select="handelSelect" @open="handleOpen" @close="handleClose">
                                         <el-submenu index="/list/1">
                                             <template slot="title">
@@ -84,40 +85,67 @@
                                             <el-menu-item-group>
                                                 <el-menu-item index="/list/1">公司概况</el-menu-item>
                                                 <el-menu-item index="/list/2">公司治理概要</el-menu-item>
-                                                <el-menu-item index="/list/3">产品基本信息</el-menu-item>
+                                                <el-submenu index="/list/3">
+                                                    <template slot="title">产品基本信息</template>
+                                                    <el-menu-item index="/list/3">车险</el-menu-item>
+                                                    <el-menu-item index="/list/4">企业财产险</el-menu-item>
+                                                    <el-menu-item index="/list/5">工程险</el-menu-item>
+                                                    <el-menu-item index="/list/6">责任保险</el-menu-item>
+                                                    <el-menu-item index="/list/7">意外伤害保险 </el-menu-item>
+                                                    <el-menu-item index="/list/8">短期健康保险</el-menu-item>
+                                                    <el-menu-item index="/list/9">其他险</el-menu-item>
+                                                    <el-menu-item index="/list/10">货物运输险</el-menu-item>
+                                                    <el-menu-item index="/list/11">家庭财产险</el-menu-item>
+                                                    <el-menu-item index="/list/12">船舶险 </el-menu-item>
+                                                    <el-menu-item index="/list/13">特殊风险保险</el-menu-item>
+                                                    <el-menu-item index="/list/14">农业保险</el-menu-item>
+                                                    <el-menu-item index="/list/15">信用保证险</el-menu-item>
+                                                    <!-- <el-menu-item index="/list/16">其他关联交易</el-menu-item> -->
+                                                </el-submenu>
                                             </el-menu-item-group>
                                         </el-submenu>
-                                        <el-menu-item index="/list/4">
+                                        <el-menu-item index="/list/16">
                                             <i class="icon icon2"></i>
                                             <span slot="title">年度信息披露</span>
                                         </el-menu-item>
-                                        <el-menu-item index="/list/5">
+                                        <el-menu-item index="/list/17">
                                             <i class="icon icon3"></i>
                                             <span slot="title">重大事项</span>
                                         </el-menu-item>
-                                        <el-submenu index="/list/6">
+                                        <el-submenu index="/list/18">
                                             <template slot="title">
                                                 <i class="icon icon1"> </i>
                                                 <span>专项信息</span>
                                             </template>
                                             <!-- <el-menu-item-group> -->
-                                                <el-menu-item index="/list/6">股东股权</el-menu-item>
-                                                <el-menu-item index="/list/7">偿付能力</el-menu-item>
-                                                <el-menu-item index="/list/8">互联网保险</el-menu-item>
-                                                <el-submenu index="/list/9">
-                                                    <template slot="title">关联交易</template>
-                                                    <el-menu-item index="/list/9">关联交易季度报告</el-menu-item>
-                                                    <el-menu-item index="/list/10">重大关联交易</el-menu-item>
-                                                    <el-menu-item index="/list/11">统一交易协议</el-menu-item>
-                                                    <el-menu-item index="/list/12">其他关联交易</el-menu-item>
+                                            <el-menu-item index="/list/18">股东股权</el-menu-item>
+                                            <el-menu-item index="/list/19">偿付能力</el-menu-item>
+                                                <el-submenu index="/list/20">
+                                                    <template slot="title">互联网保险</template>
+                                                    <el-menu-item index="/list/20">披露基本信息</el-menu-item>
+                                                    <el-menu-item index="/list/21">已设立二级机构详情</el-menu-item>
+                                                    <el-menu-item index="/list/22">互联网保险产品信息详情</el-menu-item>
+                                                    <el-menu-item index="/list/23">合作保险中介机构网络平台详情</el-menu-item>
+                                                    <el-menu-item index="/list/24">自营网络平台情况及自营产品列表</el-menu-item>
+                                                    <el-menu-item index="/list/25">落地服务机构详情</el-menu-item>
+                                                    <el-menu-item index="/list/26">合作技术支持、客户服务机构列表</el-menu-item>
+                                                    <el-menu-item index="/list/27">转委托机构详情</el-menu-item>
+                                                    <el-menu-item index="/list/28">投诉渠道和投诉处理程序</el-menu-item>
                                                 </el-submenu>
-                                                <el-menu-item index="/list/13">非保险子公司</el-menu-item>
-                                                <el-menu-item index="/list/14">资金运用</el-menu-item>
-                                                <el-menu-item index="/list/15">新型保险</el-menu-item>
-                                                <el-menu-item index="/list/16">交强险</el-menu-item>
-                                                <el-menu-item index="/list/17">短期健康险</el-menu-item>
-                                                <el-menu-item index="/list/18">意外险</el-menu-item>
-                                                <el-menu-item index="/list/19">其他事项</el-menu-item>
+                                                <el-submenu index="/list/29">
+                                                    <template slot="title">关联交易</template>
+                                                    <el-menu-item index="/list/29">关联交易季度报告</el-menu-item>
+                                                    <el-menu-item index="/list/30">重大关联交易</el-menu-item>
+                                                    <el-menu-item index="/list/31">统一交易协议</el-menu-item>
+                                                    <el-menu-item index="/list/32">其他关联交易</el-menu-item>
+                                                </el-submenu>
+                                                <el-menu-item index="/list/33">非保险子公司</el-menu-item>
+                                                <el-menu-item index="/list/34">资金运用</el-menu-item>
+                                                <el-menu-item index="/list/35">新型保险</el-menu-item>
+                                                <el-menu-item index="/list/36">交强险</el-menu-item>
+                                                <el-menu-item index="/list/37">短期健康险</el-menu-item>
+                                                <el-menu-item index="/list/38">意外险</el-menu-item>
+                                                <el-menu-item index="/list/39">其他事项</el-menu-item>
                                             <!-- </el-menu-item-group> -->
                                         </el-submenu>
                                     </el-menu>
@@ -130,11 +158,6 @@
 
                             </el-col>
                         </el-row>
-                        <!-- <div>
-                            <el-button type="primary"><router-link to="/foo">主要按钮</router-link></el-button>
-                          
-                        </div>
-                        <router-view></router-view> -->
                     </div>
                 </div>
 
@@ -172,7 +195,7 @@
             </div>
             <hr>
             <div class="bei">
-                版权所有 © 申能财产保险股份有限公司 未经许可不得复制、转载或摘编，违者必究！  Ι  Copyright 1994-2019 Tianan Property Insurance Co.,Ltd All right reserved  Ι ICP许可证号 沪ICP备06021817号-1 公安部备案号：31011502010058   Ι  本网站已支持IPv6
+                版权所有 © 申能财产保险股份有限公司 未经许可不得复制、转载或摘编，违者必究！  Ι  Copyright 1994-2019 Shenergy Property & Casualty Insurance Co., Ltd. All right reserved  Ι ICP许可证号 沪ICP备06021817号-1 公安部备案号：31011502010058   Ι  本网站已支持IPv6
             </div>
             <div class="footer_bg"></div>
 
@@ -256,8 +279,78 @@
                 
             ]
         },
+        // {
+        //     title: ' 产品基本信息', id: '3', pages: true, line: true, list: [
+                
+        //     ]
+        // },
         {
-            title: ' 产品基本信息', id: '3', pages: true, line: true, list: [
+            title: ' 车险', id: '3', pages: true, line: true, list: [
+                
+            ]
+        },
+        {
+            title: ' 企业财产险', id: '4', pages: true, line: true, list: [
+                
+            ]
+        },
+        {
+            title: ' 工程险', id: '5', pages: true, line: true, list: [
+                
+            ]
+        },
+        {
+            title: ' 责任保险', id: '6', pages: true, line: true, list: [
+                
+            ]
+        },
+        {
+            title: ' 意外伤害保险', id: '7', pages: true, line: true, list: [
+                
+            ]
+        },
+        {
+            title: ' 短期健康保险', id: '8', pages: true, line: true, list: [
+                
+            ]
+        },
+        {
+            title: ' 其他险', id: '9', pages: true, line: true, list: [
+                
+            ]
+        },
+        {
+            title: ' 货物运输险', id: '10', pages: true, line: true, list: [
+                
+            ]
+        },
+        {
+            title: ' 家庭财产险', id: '11', pages: true, line: true, list: [
+                
+            ]
+        },
+        {
+            title: ' 船舶险', id: '12', pages: true, line: true, list: [
+                
+            ]
+        },
+        {
+            title: ' 特殊风险保险', id: '13', pages: true, line: true, list: [
+                
+            ]
+        },
+        {
+            title: ' 农业保险', id: '14', pages: true, line: true, list: [
+                
+            ]
+        },
+        {
+            title: ' 信用保证险', id: '15', pages: true, line: true, list: [
+                
+            ]
+        },
+        {
+            title: ' 年度信息披露', id: '16', pages: true, line: true, list: [
                 // {
                 //     id: '1',ide: true, content: '',author:'作者：申能财险', time: '',  newtime:'2024-01-17', tip: '文章来源：国家金融监督管理总局网站', container: [
                         
@@ -267,7 +360,7 @@
             ]
         },
         {
-            title: ' 年度信息披露', id: '4', pages: true, line: true, list: [
+            title: ' 重大事项', id: '17', pages: true, line: true, list: [
                 // {
                 //     id: '1',ide: true, content: '',author:'作者：申能财险', time: '',  newtime:'2024-01-17', tip: '文章来源：国家金融监督管理总局网站', container: [
                         
@@ -277,7 +370,7 @@
             ]
         },
         {
-            title: ' 重大事项', id: '5', pages: true, line: true, list: [
+            title: ' 股东股权', id: '18', pages: true, line: true, list: [
                 // {
                 //     id: '1',ide: true, content: '',author:'作者：申能财险', time: '',  newtime:'2024-01-17', tip: '文章来源：国家金融监督管理总局网站', container: [
                         
@@ -287,7 +380,7 @@
             ]
         },
         {
-            title: ' 股东股权', id: '6', pages: true, line: true, list: [
+            title: ' 偿付能力', id: '19', pages: true, line: true, list: [
                 // {
                 //     id: '1',ide: true, content: '',author:'作者：申能财险', time: '',  newtime:'2024-01-17', tip: '文章来源：国家金融监督管理总局网站', container: [
                         
@@ -297,7 +390,62 @@
             ]
         },
         {
-            title: ' 偿付能力', id: '7', pages: true, line: true, list: [
+            title: ' 披露基本信息', id: '20', pages: true, line: true, list: [
+               
+                
+            ]
+        },
+        
+        {
+            title: ' 已设立二级机构详情', id: '21', pages: true, line: true, list: [
+               
+                
+            ]
+        },
+        {
+            title: ' 互联网保险产品信息详情', id: '22', pages: true, line: true, list: [
+               
+                
+            ]
+        },
+        {
+            title: ' 合作保险中介机构网络平台详情', id: '23', pages: true, line: true, list: [
+               
+                
+            ]
+        },
+        {
+            title: ' 自营网络平台情况及自营产品列表', id: '24', pages: true, line: true, list: [
+               
+                
+            ]
+        },
+        {
+            title: ' 落地服务机构详情', id: '25', pages: true, line: true, list: [
+               
+                
+            ]
+        },
+        {
+            title: ' 合作技术支持、客户服务机构列表', id: '26', pages: true, line: true, list: [
+               
+                
+            ]
+        },
+        {
+            title: ' 转委托机构详情', id: '27', pages: true, line: true, list: [
+               
+                
+            ]
+        },
+        {
+            title: ' 投诉渠道和投诉处理程序', id: '28', pages: true, line: true, list: [
+               
+                
+            ]
+        },
+        {
+            title: ' 关联交易季度报告', id: '29', pages: true, line: true, list: [
                 // {
                 //     id: '1',ide: true, content: '',author:'作者：申能财险', time: '',  newtime:'2024-01-17', tip: '文章来源：国家金融监督管理总局网站', container: [
                         
@@ -307,18 +455,7 @@
             ]
         },
         {
-            title: ' 互联网保险', id: '8', pages: true, line: true, list: [
-                // {
-                //     id: '1',ide: true, content: '',author:'作者：申能财险', time: '',  newtime:'2024-01-17', tip: '文章来源：国家金融监督管理总局网站', container: [
-                        
-                //     ],
-                // },
-                
-            ]
-        },
-      
-        {
-            title: ' 关联交易季度报告', id: '9', pages: true, line: true, list: [
+            title: ' 重大关联交易', id: '30', pages: true, line: true, list: [
                 // {
                 //     id: '1',ide: true, content: '',author:'作者：申能财险', time: '',  newtime:'2024-01-17', tip: '文章来源：国家金融监督管理总局网站', container: [
                         
@@ -328,7 +465,7 @@
             ]
         },
         {
-            title: ' 重大关联交易', id: '10', pages: true, line: true, list: [
+            title: ' 统一交易协议', id: '31', pages: true, line: true, list: [
                 // {
                 //     id: '1',ide: true, content: '',author:'作者：申能财险', time: '',  newtime:'2024-01-17', tip: '文章来源：国家金融监督管理总局网站', container: [
                         
@@ -338,7 +475,7 @@
             ]
         },
         {
-            title: ' 统一交易协议', id: '11', pages: true, line: true, list: [
+            title: ' 其他关联交易', id: '32', pages: true, line: true, list: [
                 // {
                 //     id: '1',ide: true, content: '',author:'作者：申能财险', time: '',  newtime:'2024-01-17', tip: '文章来源：国家金融监督管理总局网站', container: [
                         
@@ -348,7 +485,7 @@
             ]
         },
         {
-            title: ' 其他关联交易', id: '12', pages: true, line: true, list: [
+            title: ' 非保险子公司', id: '33', pages: true, line: true, list: [
                 // {
                 //     id: '1',ide: true, content: '',author:'作者：申能财险', time: '',  newtime:'2024-01-17', tip: '文章来源：国家金融监督管理总局网站', container: [
                         
@@ -358,7 +495,7 @@
             ]
         },
         {
-            title: ' 非保险子公司', id: '13', pages: true, line: true, list: [
+            title: ' 资金运用', id: '34', pages: true, line: true, list: [
                 // {
                 //     id: '1',ide: true, content: '',author:'作者：申能财险', time: '',  newtime:'2024-01-17', tip: '文章来源：国家金融监督管理总局网站', container: [
                         
@@ -368,7 +505,7 @@
             ]
         },
         {
-            title: ' 资金运用', id: '14', pages: true, line: true, list: [
+            title: ' 新型保险', id: '35', pages: true, line: true, list: [
                 // {
                 //     id: '1',ide: true, content: '',author:'作者：申能财险', time: '',  newtime:'2024-01-17', tip: '文章来源：国家金融监督管理总局网站', container: [
                         
@@ -378,7 +515,7 @@
             ]
         },
         {
-            title: ' 新型保险', id: '15', pages: true, line: true, list: [
+            title: ' 交强险', id: '36', pages: true, line: true, list: [
                 // {
                 //     id: '1',ide: true, content: '',author:'作者：申能财险', time: '',  newtime:'2024-01-17', tip: '文章来源：国家金融监督管理总局网站', container: [
                         
@@ -388,7 +525,7 @@
             ]
         },
         {
-            title: ' 交强险', id: '16', pages: true, line: true, list: [
+            title: ' 短期健康险', id: '37', pages: true, line: true, list: [
                 // {
                 //     id: '1',ide: true, content: '',author:'作者：申能财险', time: '',  newtime:'2024-01-17', tip: '文章来源：国家金融监督管理总局网站', container: [
                         
@@ -398,7 +535,7 @@
             ]
         },
         {
-            title: ' 短期健康险', id: '17', pages: true, line: true, list: [
+            title: ' 意外险', id: '38', pages: true, line: true, list: [
                 // {
                 //     id: '1',ide: true, content: '',author:'作者：申能财险', time: '',  newtime:'2024-01-17', tip: '文章来源：国家金融监督管理总局网站', container: [
                         
@@ -408,17 +545,7 @@
             ]
         },
         {
-            title: ' 意外险', id: '18', pages: true, line: true, list: [
-                // {
-                //     id: '1',ide: true, content: '',author:'作者：申能财险', time: '',  newtime:'2024-01-17', tip: '文章来源：国家金融监督管理总局网站', container: [
-                        
-                //     ],
-                // },
-                
-            ]
-        },
-        {
-            title: ' 其他事项', id: '19', pages: true, line: true, list: [
+            title: ' 其他事项', id: '39', pages: true, line: true, list: [
                 // {
                 //     id: '1',ide: true, content: '',author:'作者：申能财险', time: '',  newtime:'2024-01-17', tip: '文章来源：国家金融监督管理总局网站', container: [
                         
@@ -555,20 +682,59 @@
                 path: '',
                 pathName: '',
                 pathDa: '',
+                pathEndName:'',
                 pathRoute: '',
+                pathRouteEnd: '',
                 pathFlag: false,
+                pathEnd:false,
                 routerArr: {
-                    1: '公司概况', 2: '公司治理概要', 3: '产品基本信息',
-                    4:'年度信息披露', 5:'重大事项', 6:'股东股权', 7:'偿付能力', 8:'互联网保险', 9:'关联交易季度报告', 10:'重大关联交易', 11:'统一交易协议', 12:'其他关联交易', 13:'非保险子公司',
-                    14:'资金运用', 15:'新型保险', 16:'交强险', 17:'短期健康险',18:'意外险',19:'其他事项',
+                    1: '公司概况', 2: '公司治理概要', 3: '车险',4: '企业财产险',5: '工程险',6: '责任保险',7: '意外伤害保险',8: '短期健康保险',9: '其他险',10: '货物运输险',11: '家庭财产险',12: '船舶险',13: '特殊风险保险',14: '农业保险',15: '信用保证险',
+                    16:'年度信息披露', 17:'重大事项', 18:'股东股权', 19:'偿付能力',20:'披露基本信息',21:'已设立二级机构详情',22:'互联网保险产品信息详情',23:'合作保险中介机构网络平台详情',24:'自营网络平台情况及自营产品列表',25:'落地服务机构详情',26:'合作技术支持、客户服务机构列表',27:'转委托机构详情',28:'投诉渠道和投诉处理程序', 
+                    29:'关联交易季度报告', 30:'重大关联交易', 31:'统一交易协议', 32:'其他关联交易', 33:'非保险子公司',
+                    34:'资金运用', 35:'新型保险', 36:'交强险', 37:'短期健康险',38:'意外险',39:'其他事项',
 
                 }
             }
         },
         computed: {
-            username() {
-
-                // return this.$route.params.username
+            activeIndex(){
+                let key=this.$route.path
+                this.pathName = this.routerArr[key.substring(6, 8)]
+                if (key == '/list/1' || key == '/list/2' || key == '/list/3'|| key == '/list/4'|| key == '/list/5'|| key == '/list/6'|| key == '/list/7'|| key == '/list/7'|| key == '/list/9'|| key == '/list/10'|| key == '/list/11'|| key == '/list/12'|| key == '/list/13'|| key == '/list/14'|| key == '/list/15') {
+                    this.pathFlag = true
+                    this.pathDa = '基本信息'
+                    this.pathRoute = '/list/1'
+                    if(key == '/list/3'|| key == '/list/4'|| key == '/list/5'|| key == '/list/6'|| key == '/list/7'|| key == '/list/7'|| key == '/list/9'|| key == '/list/10'|| key == '/list/11'|| key == '/list/12'|| key == '/list/13'|| key == '/list/14'|| key == '/list/15'){
+                        this.pathEnd=true
+                        this.pathEndName='产品基本信息'
+                        this.pathRouteEnd='/list/3'
+                    }else{
+                        this.pathEnd=false
+                    }
+                } else if(key == '/list/18' || key == '/list/19' ||key == '/list/20' || key == '/list/21' ||key == '/list/22' || key == '/list/23' ||key == '/list/24' || key == '/list/25' ||key == '/list/26' || key == '/list/27' || key == '/list/28'|| key == '/list/29'||key == '/list/30'|| key == '/list/31'|| key == '/list/32'|| key == '/list/33'|| key == '/list/34'|| key == '/list/35'|| key == '/list/36'|| key == '/list/37'|| key == '/list/38'|| key == '/list/39') {
+                    this.pathFlag = true
+                    this.pathDa = '专项信息'
+                    this.pathRoute = '/list/18'
+                    if(key == '/list/20' || key == '/list/21' ||key == '/list/22' || key == '/list/23' ||key == '/list/24' || key == '/list/25' ||key == '/list/26' || key == '/list/27' || key == '/list/28'){
+                        this.pathEnd=true
+                        this.pathEndName='互联网保险'
+                        this.pathRouteEnd='/list/20'
+                    }else{
+                        this.pathEnd=false
+                    }
+                    if(key == '/list/29'||key == '/list/30'|| key == '/list/31'|| key == '/list/32'){
+                        this.pathEnd=true
+                        this.pathEndName='关联交易'
+                        this.pathRouteEnd='/list/29'
+                    }else{
+                        this.pathEnd=false
+                    }
+                } else{
+                    this.pathEnd=false
+                    this.pathFlag = false
+                }
+                return key
+               
             }
         },
         created: function () {
@@ -584,7 +750,7 @@
             handleOpen(key, keyPath) {
                 
                 this.$router.push(key)
-                this.getPath(key)
+                // this.getPath(key)
 
             },
             handleClose(key, keyPath) {
@@ -593,7 +759,7 @@
             handelSelect(key) {
                 console.log(key)
 
-                this.getPath(key)
+                // this.getPath(key)
                 console.log(this.pathName)
                 this.$router.push(key)
             },
@@ -610,6 +776,11 @@
                     this.pathFlag = false
                 }
                 this.pathName = this.routerArr[key.substring(6, 8)]
+            },
+            toInit(key){
+                // this.pathEnd=false
+                this.handelSelect(key)
+                // this.$router.go(0)
             }
         },
 

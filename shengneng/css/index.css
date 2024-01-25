@@ -14,7 +14,7 @@ ul li {
     list-style: none;
 }
 html{
-    font-size: 9px;
+    font-size: 10px;
     color: #4e4e4e;
     font-family: 'Museo';
 }
@@ -471,8 +471,8 @@ hr{
 }
 footer .bei{
     width: 105.3125rem;
-    font-size: 8px;
-    color: #212529;
+    font-size: 10px;
+    /* color: #212529; */
     margin: 10px auto;
 }
 .banner {
