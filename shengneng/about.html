@@ -466,6 +466,7 @@
                 pathDa: '',
                 pathRoute: '',
                 pathFlag: false,
+                oldKey:'',
                 routerArr: {
                     1: '公司架构', 2: '公司介绍', 3: '企业文化',
                     4: '申能成就', 6: '保险许可证信息公告专栏', 7: '公司服务承诺',
@@ -478,27 +479,32 @@
         computed: {
             activeIndex(){
                 let key=this.$route.path
+                if(key=='/detail'){
+                    return this.oldKey
+                }
                 this.pathName = this.routerArr[key.substring(6, 8)]
                 if (key == '/list/1' || key == '/list/2') {
                     this.pathFlag = true
                     this.pathDa = '公司概况'
                     this.pathRoute = '/list/1'
-                    return key
+                   
                 } else if (key == '/list/6' || key == '/list/7' || key == '/list/8' || key == '/list/9' || key == '/list/10') {
                     this.pathFlag = true
                     this.pathDa = '申能公告'
                     this.pathRoute = '/list/6'
-                    return key
+                   
                 } else if (key == '/list/12' || key == '/list/13') {
                     this.pathFlag = true
                     this.pathDa = '申能新闻'
                     this.pathRoute = '/list/12'
-                    return key
+                
                 } else {
                     this.pathFlag = false
-                    return key
+                    
                     
                 }
+                this.oldKey=key
+                return key
             },
         },
         created: function () {
@@ -513,42 +519,15 @@
             },
             handleOpen(key, keyPath) {
                 this.$router.push(key)
-                // this.getPath(key)
-                
             },
             handleClose(key, keyPath) {
                 console.log(key, keyPath);
             },
             handelSelect(key) {
-                console.log(key,'kakkkk')
-               
-                // this.getPath(key)
-                console.log(this.pathName)
                 this.$router.push(key)
             },
-            getPath(key){
-                
-                if (key == '/list/1' || key == '/list/2') {
-                    this.pathFlag = true
-                    this.pathDa = '公司概况'
-                    this.pathRoute = '/list/1'
-                } else if (key == '/list/6' || key == '/list/7' || key == '/list/8' || key == '/list/9' || key == '/list/10') {
-                    this.pathFlag = true
-                    this.pathDa = '申能公告'
-                    this.pathRoute = '/list/6'
-                } else if (key == '/list/12' || key == '/list/13') {
-                    this.pathFlag = true
-                    this.pathDa = '申能新闻'
-                    this.pathRoute = '/list/12'
-                } else {
-                    this.pathFlag = false
-                }
-                this.pathName = this.routerArr[key.substring(6, 8)]
-            },
             toInit(key){
-                // this.activeIndex=this.pathRoute
                 this.handelSelect(key)
-                // this.$router.go(0)
             }
         },
 

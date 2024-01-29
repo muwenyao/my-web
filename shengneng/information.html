@@ -692,6 +692,7 @@
                 pathRouteEnd: '',
                 pathFlag: false,
                 pathEnd:false,
+                oldKey:'',
                 routerArr: {
                     1: '公司概况', 2: '公司治理概要', 3: '车险',4: '企业财产险',5: '工程险',6: '责任保险',7: '意外伤害保险',8: '短期健康保险',9: '其他险',10: '货物运输险',11: '家庭财产险',12: '船舶险',13: '特殊风险保险',14: '农业保险',15: '信用保证险',
                     16:'年度信息披露', 17:'重大事项', 18:'股东股权', 19:'偿付能力',20:'披露基本信息',21:'已设立二级机构详情',22:'互联网保险产品信息详情',23:'合作保险中介机构网络平台详情',24:'自营网络平台情况及自营产品列表',25:'落地服务机构详情',26:'合作技术支持、客户服务机构列表',27:'转委托机构详情',28:'投诉渠道和投诉处理程序', 
@@ -704,6 +705,9 @@
         computed: {
             activeIndex(){
                 let key=this.$route.path
+                if(key=='/detail'){
+                    return this.oldKey
+                }
                 this.pathName = this.routerArr[key.substring(6, 8)]
                 if (key == '/list/1' || key == '/list/2' || key == '/list/3'|| key == '/list/4'|| key == '/list/5'|| key == '/list/6'|| key == '/list/7'|| key == '/list/7'|| key == '/list/9'|| key == '/list/10'|| key == '/list/11'|| key == '/list/12'|| key == '/list/13'|| key == '/list/14'|| key == '/list/15') {
                     this.pathFlag = true
@@ -735,6 +739,7 @@
                     this.pathEnd=false
                     this.pathFlag = false
                 }
+                this.oldKey=key
                 return key
                
             }
@@ -750,34 +755,13 @@
                 window.history.length > 1 ? this.$router.go(-1) : this.$router.push('/')
             },
             handleOpen(key, keyPath) {
-                
                 this.$router.push(key)
-                // this.getPath(key)
-
             },
             handleClose(key, keyPath) {
                 console.log(key, keyPath);
             },
             handelSelect(key) {
-                console.log(key)
-
-                // this.getPath(key)
-                console.log(this.pathName)
                 this.$router.push(key)
-            },
-            getPath(key) {
-                if (key == '/list/1' || key == '/list/2' || key == '/list/3') {
-                    this.pathFlag = true
-                    this.pathDa = '基本信息'
-                    this.pathRoute = '/list/1'
-                } else if(key == '/list/6' || key == '/list/7' ||key == '/list/8' || key == '/list/9' ||key == '/list/10' || key == '/list/11' ||key == '/list/12' || key == '/list/13' ||key == '/list/14' || key == '/list/15' || key == '/list/16'|| key == '/list/17'|| key == '/list/18'|| key == '/list/19') {
-                    this.pathFlag = true
-                    this.pathDa = '专项信息'
-                    this.pathRoute = '/list/6'
-                } else{
-                    this.pathFlag = false
-                }
-                this.pathName = this.routerArr[key.substring(6, 8)]
             },
             toInit(key){
                 this.handelSelect(key)

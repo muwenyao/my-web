@@ -877,8 +877,8 @@
                 pathDa: '',
                 pathRoute: '',
                 pathFlag: false,
-                // activeIndex:'/list/1',
                 inMenu:true,
+                oldKey:'',
                 routerArr: {
                     1: '教育宣传', 2: '风险提示', 3: '以案说险',
 
@@ -890,15 +890,23 @@
         },
         computed: {
             activeIndex(){
+                
                 let key=this.$route.path
+                if(key=='/detail'){
+                    return this.oldKey
+                }
+                console.log(key)
                 this.pathName = this.routerArr[key.substring(6, 8)]
                 if (key == '/list/1' || key == '/list/2' || key == '/list/3') {
                     this.pathFlag = true
                     this.pathDa = '消费者权益保护专栏'
                     this.pathRoute = '/list/1'
                     this.path='/list/1'
-                    return '/list/1'
+                   
                 }
+                this.oldKey=key
+                return key
+                
             }
             
         },
@@ -913,44 +921,18 @@
                 window.history.length > 1 ? this.$router.go(-1) : this.$router.push('/')
             },
             handleOpen(key, keyPath) {
-                
                 this.$router.push(key).catch(err => err)
-                // this.getPath(key)
-
             },
             handleClose(key, keyPath) {
                 console.log(key, keyPath);
             },
             handelSelect(key) {
                 console.log(key)
-                // this.getPath(key)
                 this.$router.push(key).catch(err => err)
-                // this.$router.go(0)
-            },
-            getPath(key) {
-                
-                if(!key){
-                    return
-                }
-                if (key == '/list/1' || key == '/list/2' || key == '/list/3') {
-                    this.pathFlag = true
-                    this.pathDa = '消费者权益保护专栏'
-                    this.pathRoute = '/list/1'
-                    this.path='/list/1'
-                } else {
-                    this.pathFlag = false
-                }
-                this.pathName = this.routerArr[key.substring(6, 8)]
             },
             toInit(key){
                 this.handelSelect(key)
-                this.$router.go(0)
             },
-            toPage(){
-                this.handelSelect('/list/1')
-                this.$router.go(0)
-                console.log(this.$route.path)
-            }
         },
 
     })
